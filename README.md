@@ -8,7 +8,7 @@ Clone && Run with maven by executing
 mvn clean install exec:java
 ```
 
-Go to http://localhost:8080/msg and you will see "My message" string.
+Go to http://localhost:8080/msg and you will see some running message.
 
 # How to configure SSL
 1) Put your JKS files (cert and trusted) in /resources/certificates folder,
