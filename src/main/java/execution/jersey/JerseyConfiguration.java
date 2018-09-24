@@ -13,12 +13,12 @@ class JerseyConfiguration extends ResourceConfig {
 
     @Inject
     public JerseyConfiguration(ServiceLocator serviceLocator) {
-        // Controllers
-        register(Message.class);
-
         // Guice injection bridge
         GuiceBridge.getGuiceBridge().initializeGuiceBridge(serviceLocator);
         GuiceIntoHK2Bridge guiceBridge = serviceLocator.getService(GuiceIntoHK2Bridge.class);
         guiceBridge.bridgeGuiceInjector(Globals.getGuiceInjector());
+
+        // Controllers
+        register(Message.class);
     }
 }

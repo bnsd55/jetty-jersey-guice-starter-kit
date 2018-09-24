@@ -2,6 +2,7 @@ package utility;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.google.inject.Stage;
 import execution.guice.GuiceModule;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class Globals {
 
     public static Injector getGuiceInjector() {
         if (guiceInjector == null) {
-            guiceInjector = Guice.createInjector(
+            guiceInjector = Guice.createInjector(Stage.PRODUCTION,
                     new GuiceModule());
         }
 
