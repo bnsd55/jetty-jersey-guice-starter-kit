@@ -19,6 +19,14 @@ public class SSLContextHandler {
     @Named("trustPass")
     private String trustPass;
 
+    @Inject
+    @Named("certPath")
+    private String certPath;
+
+    @Inject
+    @Named("trustPath")
+    private String trustPath;
+
     private KeyStore keyStore;
 
     private KeyStore trustStore;
@@ -26,10 +34,10 @@ public class SSLContextHandler {
     public SSLContextHandler() throws Exception {
         Globals.getGuiceInjector().injectMembers(this);
 
-        this.keyStore = this.loadStore(SSLContextHandler.class.getClassLoader().getResourceAsStream("certificates/keycert.jks"),
+        this.keyStore = this.loadStore(SSLContextHandler.class.getClassLoader().getResourceAsStream(this.certPath),
                 this.certPass.toCharArray());
 
-        this.trustStore = this.loadStore(SSLContextHandler.class.getClassLoader().getResourceAsStream("certificates/trusted.jks"),
+        this.trustStore = this.loadStore(SSLContextHandler.class.getClassLoader().getResourceAsStream(this.trustPath),
                 this.trustPass.toCharArray());
     }
 
